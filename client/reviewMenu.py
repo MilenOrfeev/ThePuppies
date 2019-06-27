@@ -48,9 +48,9 @@ class ReviewMenu(Menu):
     def __init__(self,personProfile):
         self.personProfile = personProfile
         window = Tk()
-        self.Name = "John"
-        self.Position = "VP of Consultancy"
-        self.Team = "Reporting "
+        self.Name = personProfile['Name']
+        self.Role = personProfile['Role']
+        self.Team = personProfile['Team']
         frame = Frame(window, width= 200, height = 400)
         l1 = Label(frame, text="Name:  " + str(self.Name))
         l1.pack()
