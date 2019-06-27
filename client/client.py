@@ -7,8 +7,13 @@ from circle import Circle
 
 
 class Circle(Frame):
+<<<<<<< HEAD
     def draw_circle(self, center_x, center_y, radius, colour):
         return self.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, activefill="grey", fill=colour)
+=======
+    def draw_circle(self, center_x, center_y, radius, colour=None):
+        return self.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, activefill="grey", fill="red")
+>>>>>>> New
     Canvas.draw_circle = draw_circle
 
 
