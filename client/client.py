@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import ImageTk, Image
 from HoverInfo import HoverInfo
 from reviewMenu import ReviewMenu
+from Dictionary import *
 
 
 class Circle(Frame):
@@ -10,17 +11,20 @@ class Circle(Frame):
     Canvas.draw_circle = draw_circle
 
 
-    def __init__(self, sid, parent=None):
+    def __init__(self, sid, x, y, radius, parent=None):
         Frame.__init__(self, parent)
 
         self.sid = sid
         self.hover = HoverInfo(self, 'kjsdfhkjsadh')
-
-        circle1 = canvas.draw_circle(100, 120, 10)
+        self.x = x
+        self.y = y
+        self.radius = radius
+        circle1 = canvas.draw_circle(x,y,radius)
         canvas.tag_bind(circle1,'<ButtonPress-1>',onObjectClick)
 
 
 def onObjectClick(event):
+    print(event.x)
     print(event.widget.find_closest(event.x, event.y))
     ReviewMenu()
 
@@ -36,8 +40,8 @@ img = ImageTk.PhotoImage(Image.open(path))
 map = canvas.create_image(640, 200, image=img, anchor="e")
 canvas.tag_lower(map)
 
-circle = Circle("a3")
-print('a3', circle)
+for v in employeeDictionary.values():
+    Circle(v['SID'],v['Coordinates'][0],v['Coordinates'][1],30)
 
 
 
