@@ -1,7 +1,7 @@
 import os
-from .db import init_app, init_db
+from .db import init_app, init_db, get_db
 
-from flask import Flask
+from flask import Flask, jsonify
 
 
 def create_app(test_config=None):
@@ -29,6 +29,17 @@ def create_app(test_config=None):
     @app.route('/hello')
     def hello():
         return 'Hello, World!'
+
+    @app.route('/get')
+    def getData():
+        db = get_db()
+        data = []
+        rows = db.execute('SELECT * FROM user').fetchall()
+        for row in rows:
+            print (row)
+            data.append(list(row))  # or simply data.append(list(row))
+        return jsonify(data)
+
 
     init_app(app)
     return app

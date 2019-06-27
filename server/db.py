@@ -35,6 +35,7 @@ def populate_db():
 def getData():
     db = get_db()
     print (db.execute('SELECT * FROM user').fetchall())
+    print (list(db.execute('SELECT * FROM user').fetchone()))
 
 def init_db():
     db = get_db()
