@@ -12,18 +12,20 @@ class Example(Frame):
         self.l2.pack(side="top", fill="x")
 
 class Circle(Frame):
+
+    def draw_circle(self, center_x, center_y, radius):
+        return self.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, activefill="grey")
+    Canvas.draw_circle = draw_circle
+
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
         self.grid()
         self.lbl = Label(self, text='testing')
         self.lbl.grid()
         self.hover = HoverInfo(self, 'kjsdfhkjsadh')
-        circle1 = canvas.create_oval(100,100,90,90)
+        circle1 = canvas.draw_circle(100, 120, 10)
         canvas.tag_bind(circle1,'<ButtonPress-1>',onObjectClick)
 
-    def draw_circle(self, center_x, center_y, radius):
-        return self.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, activefill="grey")
-    Canvas.draw_circle = draw_circle
 
 
 def onObjectClick(event):
@@ -45,7 +47,6 @@ canvas.grid()
 map = canvas.create_image(640, 200, image=img, anchor="e")
 canvas.tag_lower(map)
 
-canvas.draw_circle(100, 120, 10)
 
 circle = Circle()
 
