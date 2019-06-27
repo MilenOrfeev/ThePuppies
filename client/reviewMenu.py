@@ -1,6 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image
-from editForm import EditForm
+#from editForm import EditForm
 
 class ReviewMenu(Menu):
 
@@ -18,7 +18,8 @@ class ReviewMenu(Menu):
             # form to edit
             EditForm();
         a = Button(window, text = "edit employee", command=callback)
-
-        a.grid(row = 1)
+        REPORT = Button(window, bg = 'red', fg = 'red', text="REPORT!!!!!", command=callback)
+        a.grid(row = 1, column = 0)
+        REPORT.grid(row = 1, column = 1)
 
         mainloop()
