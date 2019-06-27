@@ -7,7 +7,7 @@ from Dictionary import *
 
 class Circle(Frame):
     def draw_circle(self, center_x, center_y, radius, colour):
-        return self.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, activefill="grey", fill=colour)
+        return self.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, activefill="grey", fill="red")
     Canvas.draw_circle = draw_circle
 
 
