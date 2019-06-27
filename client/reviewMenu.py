@@ -4,12 +4,12 @@ class ReportMenu(Menu):
     def callback(self):
         print("hello")
 
-    def __init__(self):
+    def __init__(self,name):
         window = Tk()
 
         #frame = Frame(window, width=400, height=400, bg = 'red')
         #frame.grid(row=0)
-        l1 = Label(window,text="You have succesfully reported the desk.\n Building Mngmt. has been informed  and will be there shortly.")
+        l1 = Label(window,text="You have succesfully reported "+str(name)+".\n Building Mngmt. has been informed  and will be there shortly.")
         l1.pack(anchor='center')
         mainloop()
 
@@ -17,27 +17,15 @@ class EditMenu(Menu):
     def callback(self):
         print("hello")
 
-    def __init__(self):
+    def __init__(self, name):
         window = Tk()
-        window.title("Edit Employee Information")
 
-        window.geometry('400x400')
-        window.configure(background="grey");
-        a = Label(window, text="First Name").grid(row=0, column=0)
-        b = Label(window, text="Last Name").grid(row=1, column=0)
-        c = Label(window, text="Seat ID").grid(row=2, column=0)
-        d = Label(window, text="Job Role").grid(row=3, column=0)
-        a1 = Entry(window).grid(row=0, column=1)
-        b1 = Entry(window).grid(row=1, column=1)
-        c1 = Entry(window).grid(row=2, column=1)
-        d1 = Entry(window).grid(row=3, column=1)
-
-        def clicked():
-            res = "Welcome to " + txt.get()
-            lbl.configure(text=res)
-
-        btn = Button(window, text="Submit").grid(row=4, column=0)
-        window.mainloop()
+        # frame = Frame(window, width=400, height=400, bg = 'red')
+        # frame.grid(row=0)
+        l1 = Label(window,
+                   text=name+" removed from chair")
+        l1.pack(anchor='center')
+        mainloop()
 
 class ReviewMenu(Menu):
 
@@ -45,7 +33,7 @@ class ReviewMenu(Menu):
         print("hello")
 
 
-    def __init__(self,personProfile):
+    def __init__(self, personProfile):
         self.personProfile = personProfile
         window = Tk()
         self.Name = personProfile['Name']
@@ -54,7 +42,7 @@ class ReviewMenu(Menu):
         frame = Frame(window, width= 200, height = 400)
         l1 = Label(frame, text="Name:  " + str(self.Name))
         l1.pack()
-        l2 = Label(frame, text="Position:  " + str(self.Position))
+        l2 = Label(frame, text="Position:  " + str(self.Role))
         l2.pack()
         l3 = Label(frame, text="Team:  " + str(self.Team))
         l3.pack()
@@ -62,11 +50,11 @@ class ReviewMenu(Menu):
 
         frame.grid(row = 0)
         def callback():
-            EditMenu()
+            EditMenu(self.Name)
         def callback2():
-            ReportMenu()
+            ReportMenu(self.Name)
             # form to edit
-        EDIT = Button(window, text = "edit employee", command=callback)
+        EDIT = Button(window, text = "Remove "+ str(self.Name) +" from Chair", command=callback)
         REPORT = Button(window, bg = 'red', fg = 'red', text="REPORT!!!!!", command=callback2)
         EDIT.grid(row = 1, column = 0)
         REPORT.grid(row = 1, column = 1)

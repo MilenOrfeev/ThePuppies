@@ -1,6 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image
-from HoverInfo import HoverInfo
+
 from reviewMenu import ReviewMenu
 from Colours import *
 from Dictionary import *
@@ -15,7 +15,6 @@ class Circle(Frame):
         Frame.__init__(self, parent)
 
         self.sid = sid
-        self.hover = HoverInfo(self, 'kjsdfhkjsadh')
         self.x = x
         self.y = y
         self.radius = radius
@@ -47,11 +46,6 @@ canvas.tag_lower(map)
 
 for v in employeeDictionary.values():
     Circle(v['SID'], v['Coordinates'][0], v['Coordinates'][1], 30, v['Team'])
-
-
-
-
-
 
 
 #Start the GUI
