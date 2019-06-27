@@ -24,9 +24,8 @@ class Circle(Frame):
 
 
 def onObjectClick(event):
-    print(event.x)
-    print(event.widget.find_closest(event.x, event.y))
-    ReviewMenu()
+    circleKey=event.widget.find_closest(event.x, event.y)[0]
+    ReviewMenu(circleKey)
 
 
 #This creates the main window of an application
