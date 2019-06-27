@@ -5,13 +5,12 @@ from Dictionary import *
 from circle import Circle
 
 
-<<<<<<< HEAD
-=======
+
 class Circle(Frame):
     def draw_circle(self, center_x, center_y, radius, colour):
         return self.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, activefill="grey", fill="red")
     Canvas.draw_circle = draw_circle
->>>>>>> 090f3e9477ec5f999a0ac07a26ef3242363258ab
+
 
 
 
