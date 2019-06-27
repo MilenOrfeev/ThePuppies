@@ -22,14 +22,23 @@ def close_db(e=None):
     if db is not None:
         db.close()
 
+def populate_db():
+    from server.Dictionary import employeeDictionary as data
+    db = get_db()
+    for key in data.keys():
+        values = data[key]
+        db.execute('INSERT into user (SID, name, seat, role, team, xCoord, yCoord) VALUES (?, ?, ?, ?, ?,?, ?)',
+                   (key, values['Name'], int(values['seat']), values['Role'], values['Team'], int(values['Coordinates'][0]), int(values['Coordinates'][1])))
+
 
 def init_db():
     db = get_db()
 
-
     with current_app.open_resource('schema.sql') as f:
         db.executescript(f.read().decode('utf8'))
     print ("Initialised db")
+    populate_db()
+    print ("Populated db")
 
 def init_app(app):
     app.teardown_appcontext(close_db)
