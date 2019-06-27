@@ -48,8 +48,19 @@ class ReviewMenu(Menu):
     def __init__(self,circleKey):
         self.circleKey = circleKey
         window = Tk()
+        self.Name = "John"
+        self.Position = "VP of Consultancy"
+        self.Team = "Reporting "
 
         frame = Frame(window, width= 200, height = 400)
+        l1 = Label(frame, text="Name:  " + str(self.Name))
+        l1.pack()
+        l2 = Label(frame, text="Position:  " + str(self.Position))
+        l2.pack()
+        l3 = Label(frame, text="Team:  " + str(self.Team))
+        l3.pack()
+        #l2 = Text(frame, text="Name:  " + str(self.Name), height=40, width=200)
+
         frame.grid(row = 0)
         def callback():
             EditMenu()
