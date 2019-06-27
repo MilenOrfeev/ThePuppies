@@ -4,12 +4,12 @@ class ReportMenu(Menu):
     def callback(self):
         print("hello")
 
-    def __init__(self):
+    def __init__(self,name):
         window = Tk()
 
         #frame = Frame(window, width=400, height=400, bg = 'red')
         #frame.grid(row=0)
-        l1 = Label(window,text="You have succesfully reported the desk.\n Building Mngmt. has been informed  and will be there shortly.")
+        l1 = Label(window,text="You have succesfully reported "+str(name)+".\n Building Mngmt. has been informed  and will be there shortly.")
         l1.pack(anchor='center')
         mainloop()
 
@@ -63,7 +63,7 @@ class ReviewMenu(Menu):
         def callback():
             EditMenu()
         def callback2():
-            ReportMenu()
+            ReportMenu(self.Name)
             # form to edit
         EDIT = Button(window, text = "edit employee", command=callback)
         REPORT = Button(window, bg = 'red', fg = 'red', text="REPORT!!!!!", command=callback2)
