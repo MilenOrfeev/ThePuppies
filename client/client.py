@@ -1,31 +1,11 @@
 from tkinter import *
 from PIL import ImageTk, Image
-from HoverInfo import HoverInfo
 from reviewMenu import ReviewMenu
 from Dictionary import *
+from circle import Circle
 
 
-class Circle(Frame):
-    def draw_circle(self, center_x, center_y, radius):
-        return self.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, activefill="grey")
-    Canvas.draw_circle = draw_circle
 
-
-    def __init__(self, sid, x, y, radius, parent=None):
-        Frame.__init__(self, parent)
-
-        self.sid = sid
-        self.hover = HoverInfo(self, 'kjsdfhkjsadh')
-        self.x = x
-        self.y = y
-        self.radius = radius
-        circle1 = canvas.draw_circle(x,y,radius)
-        canvas.tag_bind(circle1,'<ButtonPress-1>',onObjectClick)
-
-
-def onObjectClick(event):
-    circleKey=event.widget.find_closest(event.x, event.y)[0]
-    ReviewMenu(circleKey)
 
 
 #This creates the main window of an application
@@ -40,7 +20,7 @@ map = canvas.create_image(640, 200, image=img, anchor="e")
 canvas.tag_lower(map)
 
 for v in employeeDictionary.values():
-    Circle(v['SID'],v['Coordinates'][0],v['Coordinates'][1],30)
+    Circle(canvas,v['SID'],v['Coordinates'][0],v['Coordinates'][1],30)
 
 
 
