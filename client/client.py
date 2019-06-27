@@ -1,6 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image
-from HoverInfo import HoverInfo
+
 from reviewMenu import ReviewMenu
 from Colours import *
 from Dictionary import *
