@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import ImageTk, Image
 import re
 from HoverInfo import HoverInfo
+from reviewMenu import ReviewMenu
 
 class Circle(Frame):
     def __init__(self, parent=None):
@@ -16,8 +17,8 @@ class Circle(Frame):
 
 
 def onObjectClick(event):
-    print('Got object click', event.x, event.y)
-    print(event.widget.find_closest(event.x, event.y))
+    print()
+    ReviewMenu()
 
 #This creates the main window of an application
 window = Tk()
