@@ -13,25 +13,24 @@ class Example(Frame):
         self.l2.pack(side="top", fill="x")
 
 class Circle(Frame):
-
     def draw_circle(self, center_x, center_y, radius):
         return self.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, activefill="grey")
     Canvas.draw_circle = draw_circle
 
-    def __init__(self, parent=None):
+    def __init__(self, sid, parent=None):
         Frame.__init__(self, parent)
         self.grid()
+        self.sid = sid
         self.lbl = Label(self, text='testing')
         self.lbl.grid()
         self.hover = HoverInfo(self, 'kjsdfhkjsadh')
         circle1 = canvas.draw_circle(100, 120, 10)
-        canvas.tag_bind(circle1,'<ButtonPress-1>',onObjectClick)
+        canvas.tag_bind(circle1,'<ButtonPress-1>',onObjectClick(sid))
 
 
 
-def onObjectClick(event):
-    print()
-    ReviewMenu()
+def onObjectClick(sid):
+    ReviewMenu(sid)
 
 
 #This creates the main window of an application
@@ -49,7 +48,7 @@ map = canvas.create_image(640, 200, image=img, anchor="e")
 canvas.tag_lower(map)
 
 
-circle = Circle()
+circle = Circle("A11111")
 
 
 
