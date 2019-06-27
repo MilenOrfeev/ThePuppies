@@ -54,7 +54,7 @@ class ReviewMenu(Menu):
         frame = Frame(window, width= 200, height = 400)
         l1 = Label(frame, text="Name:  " + str(self.Name))
         l1.pack()
-        l2 = Label(frame, text="Position:  " + str(self.Position))
+        l2 = Label(frame, text="Position:  " + str(self.Role))
         l2.pack()
         l3 = Label(frame, text="Team:  " + str(self.Team))
         l3.pack()
