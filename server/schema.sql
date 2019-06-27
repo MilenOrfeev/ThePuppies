@@ -4,19 +4,11 @@ DROP TABLE IF EXISTS details;
 
 CREATE TABLE user (
   SID INTEGER PRIMARY KEY,
-  name TEXT NOT NULL
-);
-
-CREATE TABLE coordinates(
-    SID INTEGER PRIMARY KEY,
-    topx INTEGER,
-    topy INTEGER,
-    botx INTEGER,
-    boty INTEGER
-);
-
-CREATE TABLE details (
-  SID INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
   role TEXT,
-  team TEXT
+  team TEXT,
+  topx INTEGER,
+  topy INTEGER,
+  botx INTEGER,
+  boty INTEGER
 );
