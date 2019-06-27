@@ -24,10 +24,14 @@ class Circle(Frame):
         circle1 = canvas.draw_circle(x, y, radius, colour)
         canvas.tag_bind(circle1,'<ButtonPress-1>',onObjectClick)
 
+def getDataFromSeatId(key):
+    return employeeDictionary[str(key)]
+
 
 def onObjectClick(event):
     circleKey=event.widget.find_closest(event.x, event.y)[0]
-    ReviewMenu(circleKey)
+    getDataFromSeatId(circleKey)
+    ReviewMenu(getDataFromSeatId(str(circleKey)))
 
 
 #This creates the main window of an application

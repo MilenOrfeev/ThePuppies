@@ -45,10 +45,10 @@ class ReviewMenu(Menu):
         print("hello")
 
 
-    def __init__(self,circleKey):
-        self.circleKey = circleKey
+    def __init__(self,personProfile):
+        self.personProfile = personProfile
         window = Tk()
-
+        print(personProfile)
         frame = Frame(window, width= 200, height = 400)
         frame.grid(row = 0)
         def callback():
