@@ -17,13 +17,13 @@ class EditMenu(Menu):
     def callback(self):
         print("hello")
 
-    def __init__(self):
+    def __init__(self, name):
         window = Tk()
 
         # frame = Frame(window, width=400, height=400, bg = 'red')
         # frame.grid(row=0)
         l1 = Label(window,
-                   text="employee removed from chair")
+                   text=name+" removed from chair")
         l1.pack(anchor='center')
         mainloop()
 
@@ -33,7 +33,7 @@ class ReviewMenu(Menu):
         print("hello")
 
 
-    def __init__(self,personProfile):
+    def __init__(self, personProfile):
         self.personProfile = personProfile
         window = Tk()
         self.Name = personProfile['Name']
@@ -50,7 +50,7 @@ class ReviewMenu(Menu):
 
         frame.grid(row = 0)
         def callback():
-            EditMenu()
+            EditMenu(self.Name)
         def callback2():
             ReportMenu(self.Name)
             # form to edit
