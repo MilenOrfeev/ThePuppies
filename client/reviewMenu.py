@@ -1,11 +1,25 @@
 from tkinter import *
-
+from PIL import ImageTk, Image
+from editForm import EditForm
 
 class ReviewMenu(Menu):
+
+    def callback(self):
+        print("hello")
+
+
     def __init__(self,circleKey):
         self.circleKey = circleKey
         window = Tk()
-        canvas = Canvas(window,width=300,height=400,bg="white")
-        canvas.grid()
 
-        print (circleKey)
+        frame = Frame(window, width= 200, height = 400)
+        frame.grid(row = 0)
+
+        def callback():
+            # form to edit
+            EditForm();
+        a = Button(window, text = "edit employee", command=callback)
+
+        a.grid(row = 1)
+
+        mainloop()
