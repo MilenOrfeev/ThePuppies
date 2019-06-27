@@ -19,7 +19,8 @@ class ReviewMenu(Menu):
         print("hello")
 
 
-    def __init__(self):
+    def __init__(self,circleKey):
+        self.circleKey = circleKey
         window = Tk()
 
         frame = Frame(window, width= 200, height = 400)
