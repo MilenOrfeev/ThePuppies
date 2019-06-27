@@ -5,3 +5,4 @@ employeeDictionary = { '2': {'SID': 'A11111', 'Name': 'Maisie McGregor', 'Role':
                        '6': {'SID': 'E11111', 'Name': 'Darrel Uchendu', 'Role': 'Long Term Intern', 'Team': 'On A Team', 'Coordinates': [530,60]},
                        '7': {'SID': 'F11111', 'Name': 'Anda Andronie', 'Role': 'Long Term Intern', 'Team': 'On A Team', 'Coordinates': [370,360]},
                        '8': {'SID': 'G11111', 'Name': 'Pawel Heldt', 'Role': 'Long Term Intern', 'Team': 'On A Team', 'Coordinates': [100,360]}
+}
