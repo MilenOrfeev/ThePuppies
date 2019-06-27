@@ -21,8 +21,7 @@ class EditMenu(Menu):
         window = Tk()
         window.title("Edit Employee Information")
 
-        window.geometry('400x400')
-        window.configure(background="grey");
+        window.configure();
         a = Label(window, text="First Name").grid(row=0, column=0)
         b = Label(window, text="Last Name").grid(row=1, column=0)
         c = Label(window, text="Seat ID").grid(row=2, column=0)
