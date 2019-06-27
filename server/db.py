@@ -27,9 +27,14 @@ def populate_db():
     db = get_db()
     for key in data.keys():
         values = data[key]
+        print (values)
         db.execute('INSERT into user (SID, name, seat, role, team, xCoord, yCoord) VALUES (?, ?, ?, ?, ?,?, ?)',
                    (key, values['Name'], int(values['seat']), values['Role'], values['Team'], int(values['Coordinates'][0]), int(values['Coordinates'][1])))
+    db.commit()
 
+def getData():
+    db = get_db()
+    print (db.execute('SELECT * FROM user').fetchall())
 
 def init_db():
     db = get_db()
@@ -43,6 +48,7 @@ def init_db():
 def init_app(app):
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
+    app.cli.add_command(getDataCommand)
     print ("Added command")
 
 @click.command('init-db')
@@ -51,3 +57,10 @@ def init_db_command():
     """Clear the existing data and create new tables."""
     init_db()
     click.echo('Initialized the database.')
+
+
+@click.command('get-db')
+@with_appcontext
+def getDataCommand():
+    getData()
+
