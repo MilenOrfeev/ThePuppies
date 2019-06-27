@@ -1,53 +1,57 @@
-import tkinter as tk
+from tkinter import *
 from PIL import ImageTk, Image
+from HoverInfo import HoverInfo
 
-class Example(tk.Frame):
+class Example(Frame):
 
     def __init__(self, *args, **kwargs):
-        tk.Frame.__init__(self, *args, **kwargs)
-        self.l1 = tk.Label(self, text="Hover over me")
-        self.l2 = tk.Label(self, text="", width=40)
+        Frame.__init__(self, *args, **kwargs)
+        self.l1 = Label(self, text="Hover over me")
+        self.l2 = Label(self, text="", width=40)
         self.l1.pack(side="top")
         self.l2.pack(side="top", fill="x")
 
-        self.l1.bind("<Enter>", self.on_enter)
-        self.l1.bind("<Leave>", self.on_leave)
-
-    def on_enter(self, event):
-        self.l2.configure(text="Hello world")
-
-    def on_leave(self, enter):
-        self.l2.configure(text="")
+class Circle(Frame):
+    def __init__(self, parent=None):
+        Frame.__init__(self, parent)
+        self.grid()
+        self.lbl = Label(self, text='testing')
+        self.lbl.grid()
+        self.hover = HoverInfo(self, 'kjsdfhkjsadh')
+        circle1 = canvas.create_oval(100,100,90,90)
+        canvas.tag_bind(circle1,'<ButtonPress-1>',onObjectClick)
 
     def draw_circle(self, center_x, center_y, radius):
         return self.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, activefill="grey")
-    tk.Canvas.draw_circle = draw_circle
+    Canvas.draw_circle = draw_circle
 
+
+def onObjectClick(event):
+    print('Got object click', event.x, event.y)
+    print(event.widget.find_closest(event.x, event.y))
 
 
 #This creates the main window of an application
-window = tk.Tk()
+window = Tk()
 
+#Creates a Tkinter-compatible photo image, which can be used everywhere Tkinter expects an image object.
 path = "office_layout.png"
 img = ImageTk.PhotoImage(Image.open(path))
 
 
-canvas = tk.Canvas(window,width=640,height=449,bg="white")
+
+canvas = Canvas(window,width=640,height=449,bg="white")
 canvas.grid()
 map = canvas.create_image(640, 200, image=img, anchor="e")
 canvas.tag_lower(map)
 
-#circle1 = canvas.create_oval(120,120,90,90, activefill="grey")
-
 canvas.draw_circle(100, 120, 10)
 
-#Creates a Tkinter-compatible photo image, which can be used everywhere Tkinter expects an image object.
+circle = Circle()
 
-#The Label widget is a standard Tkinter widget used to display a text or image on the screen.
 
-#The Pack geometry manager packs widgets in rows or columns.
+
 
 
 #Start the GUI
-# Example(window).pack(side="top", fill="both", expand="true")
 window.mainloop()
