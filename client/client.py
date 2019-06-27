@@ -6,8 +6,8 @@ from Dictionary import *
 
 
 class Circle(Frame):
-    def draw_circle(self, center_x, center_y, radius):
-        return self.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, activefill="grey")
+    def draw_circle(self, center_x, center_y, radius, colour):
+        return self.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, activefill="grey", fill="red")
     Canvas.draw_circle = draw_circle
 
 
@@ -24,9 +24,8 @@ class Circle(Frame):
 
 
 def onObjectClick(event):
-    print(event.x)
-    print(event.widget.find_closest(event.x, event.y))
-    ReviewMenu()
+    circleKey=event.widget.find_closest(event.x, event.y)[0]
+    ReviewMenu(circleKey)
 
 
 #This creates the main window of an application
