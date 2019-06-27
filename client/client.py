@@ -2,6 +2,7 @@ import tkinter as tk
 from PIL import ImageTk, Image
 
 class Example(tk.Frame):
+
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
         self.l1 = tk.Label(self, text="Hover over me")
@@ -18,6 +19,11 @@ class Example(tk.Frame):
     def on_leave(self, enter):
         self.l2.configure(text="")
 
+    def draw_circle(self, center_x, center_y, radius):
+        return self.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, activefill="grey")
+    tk.Canvas.draw_circle = draw_circle
+
+
 
 #This creates the main window of an application
 window = tk.Tk()
@@ -31,7 +37,9 @@ canvas.grid()
 map = canvas.create_image(640, 200, image=img, anchor="e")
 canvas.tag_lower(map)
 
-circle1 = canvas.create_oval(100,100,90,90)
+#circle1 = canvas.create_oval(120,120,90,90, activefill="grey")
+
+canvas.draw_circle(100, 120, 10)
 
 #Creates a Tkinter-compatible photo image, which can be used everywhere Tkinter expects an image object.
 
